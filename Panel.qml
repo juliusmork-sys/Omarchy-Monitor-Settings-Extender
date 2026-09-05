@@ -387,6 +387,24 @@ Panel {
     return label || display.name
   }
 
+  // "3440 × 1440 @ 165 Hz" — native resolution, not the logical/rotated
+  // footprint used elsewhere (Arrangement, cursor-size scaling), since
+  // "what resolution is this panel" conventionally means its own physical
+  // pixels regardless of current rotation. Falls back to the width/height
+  // already on `display` (from omarchy-monitor-state) if the richer
+  // monitorInfoByName fetch hasn't populated yet, dropping refresh rate
+  // (only available from the richer fetch) in that case.
+  function displayResolutionLabel(display) {
+    if (!display) return ""
+    var info = root.monitorInfoByName[display.name]
+    var w = info ? info.width : display.width
+    var h = info ? info.height : display.height
+    if (!w || !h) return ""
+    var label = w + " × " + h
+    if (info && info.refreshRate) label += " @ " + Model.formatHz(info.refreshRate)
+    return label
+  }
+
   // Hero title: the focused display's friendly name, falling back to the
   // generic label before the first monitorInfo fetch resolves.
   readonly property string heroTitle: {
@@ -1576,15 +1594,31 @@ Panel {
         anchors.verticalCenter: parent.verticalCenter
       }
 
-      Text {
-        textFormat: Text.PlainText
-        text: root.friendlyDisplayName(monitorRow.display) + (monitorRow.display.focused ? " · focused" : "")
-        color: root.bar.foreground
-        font.family: root.bar.fontFamily
-        font.pixelSize: Style.font.body
-        elide: Text.ElideRight
+      Column {
         width: parent.width - Style.space(22) - rotationDropdown.width - toggleButton.width - Style.space(24)
         anchors.verticalCenter: parent.verticalCenter
+        spacing: Style.space(1)
+
+        Text {
+          textFormat: Text.PlainText
+          text: root.friendlyDisplayName(monitorRow.display) + (monitorRow.display.focused ? " · focused" : "")
+          color: root.bar.foreground
+          font.family: root.bar.fontFamily
+          font.pixelSize: Style.font.body
+          elide: Text.ElideRight
+          width: parent.width
+        }
+
+        Text {
+          textFormat: Text.PlainText
+          text: root.displayResolutionLabel(monitorRow.display)
+          visible: text !== ""
+          color: Qt.darker(root.bar.foreground, 1.6)
+          font.family: root.bar.fontFamily
+          font.pixelSize: Style.font.caption
+          elide: Text.ElideRight
+          width: parent.width
+        }
       }
 
       Dropdown {

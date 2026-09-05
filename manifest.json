@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "id": "io.github.juliusmork-sys.monitor-settings-extender",
+  "name": "Monitor Settings Extender",
+  "version": "1.0.0",
+  "author": "juliusmork-sys",
+  "license": "MIT",
+  "description": "Extends the stock Display bar widget with refresh rate, mirror/extend, per-display rotation, cursor size, a draggable multi-monitor arrangement diagram, and friendly display names.",
+  "kinds": [
+    "bar-widget"
+  ],
+  "entryPoints": {
+    "barWidget": "Panel.qml"
+  },
+  "barWidget": {
+    "displayName": "Monitor Settings Extender",
+    "description": "Brightness, text size, scale, refresh rate, mirror/extend, rotation, cursor size, screensaver timeout, and a draggable arrangement diagram for multi-monitor layouts.",
+    "category": "System",
+    "allowMultiple": false,
+    "defaultSection": "right"
+  },
+  "omarchy": {
+    "clonedFrom": "omarchy.monitor"
+  }
+}

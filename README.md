@@ -10,7 +10,7 @@ It's a drop-in replacement: installing it with `--enable` swaps it in for the bu
 
 This started as a screen-flickering fix, not a feature request. My external monitor was flickering at its default 165Hz — the display link couldn't reliably sustain that rate — and dropping to 99.98Hz fixed it. Fixing it meant hand-editing `~/.config/hypr/monitors.lua` and running `hyprctl`, since the stock Display widget has no refresh rate control at all.
 
-Once I was already in there, the same gap showed up everywhere else — rotation, arranging two monitors, cursor size — all `hyprctl`-and-hope-you-remember-the-syntax instead of something in the same panel as brightness and scale, which is all the stock widget covers. This plugin is that panel.
+Once I was already in there, the same gap showed up elsewhere — rotation, arranging multiple monitors, cursor size — all `hyprctl`-and-hope-you-remember-the-syntax instead of something in the same panel as brightness and scale, which is all the stock widget covers. This plugin extends that panel to cover the rest, and it's built for any number of displays, not just two — though I've only tested it against my own two-monitor setup.
 
 ## Features
 

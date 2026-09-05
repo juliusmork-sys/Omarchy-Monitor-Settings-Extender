@@ -8,9 +8,9 @@ It's a drop-in replacement: installing it with `--enable` swaps it in for the bu
 
 ## Why
 
-This started as a screen-flickering problem, not a feature request. My external monitor was flickering intermittently, and it turned out its EDID didn't advertise a clean 144Hz at its native resolution — only 165/99.98/59.97Hz — and 165Hz was sitting right at the edge of what the USB-C/DP link could reliably carry. Dropping to 99.98Hz fixed it, but doing that meant hand-editing `~/.config/hypr/monitors.lua` and re-running `hyprctl` every time, since the stock Display widget has no refresh rate control at all.
+This started as a screen-flickering fix, not a feature request. My external monitor was flickering at its default 165Hz — the display link couldn't reliably sustain that rate — and dropping to 99.98Hz fixed it. Fixing it meant hand-editing `~/.config/hypr/monitors.lua` and running `hyprctl`, since the stock Display widget has no refresh rate control at all.
 
-Once I was already in there for refresh rate, the same gap showed up everywhere else — rotation, arranging two monitors relative to each other, cursor size — all `hyprctl`-and-hope-you-remember-the-syntax instead of something in the same panel as brightness and scale, which is all the stock Display widget covers. This plugin is that panel.
+Once I was already in there, the same gap showed up everywhere else — rotation, arranging two monitors, cursor size — all `hyprctl`-and-hope-you-remember-the-syntax instead of something in the same panel as brightness and scale, which is all the stock widget covers. This plugin is that panel.
 
 ## Features
 

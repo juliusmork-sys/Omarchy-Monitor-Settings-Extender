@@ -4,6 +4,8 @@ An [Omarchy](https://omarchy.org/) shell plugin that extends the stock **Display
 
 It's a drop-in replacement: installing it with `--enable` swaps it in for the built-in Display widget in your bar automatically, in the same spot, no manual reconfiguration needed.
 
+![Screenshot](screenshot.png)
+
 ## Why
 
 The built-in Display widget only covers brightness, text size, display scale, and a plain enable/disable list. Everything else — refresh rate, rotation, arranging multiple monitors relative to each other, cursor size — meant dropping into `hyprctl` and `~/.config/hypr/monitors.lua` by hand. This plugin puts all of it in the same panel.

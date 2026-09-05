@@ -4,7 +4,7 @@ An [Omarchy](https://omarchy.org/) shell plugin that extends the stock **Display
 
 It's a drop-in replacement: installing it with `--enable` swaps it in for the built-in Display widget in your bar automatically, in the same spot, no manual reconfiguration needed.
 
-![Screenshot](screenshot.png)
+![Screenshot](preview.png)
 
 ## Why
 
@@ -40,6 +40,14 @@ omarchy plugin add https://github.com/juliusmork-sys/Omarchy-Monitor-Settings-Ex
 If you still have the stock Display widget in your bar, `--enable` replaces it in place automatically. If you don't (e.g. you'd removed it), it's added to the right section of the bar by default — move it with `omarchy bar move io.github.juliusmork-sys.monitor-settings-extender --section <left|center|right>` if you'd rather it lived elsewhere.
 
 ⚠️ Like any Omarchy shell plugin, this runs as unsandboxed code inside your long-lived `omarchy-shell` process. Read through `Panel.qml`/`Model.js` before installing if that matters to you.
+
+## Uninstall
+
+```sh
+omarchy plugin remove io.github.juliusmork-sys.monitor-settings-extender
+```
+
+This disables the plugin before deleting it, which restores the stock Display widget to its original spot in your bar automatically — no manual bar reconfiguration needed either way.
 
 ## Known limitations
 
